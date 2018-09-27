@@ -1,0 +1,24 @@
+<div class="container">
+
+    <div class="row clearfix">
+        &nbsp;
+        <button type="button" (click)="onAddInput()" class="btn btn-block btn-submit">Add Input</button>
+    </div>
+    <div class="row clearfix">
+        <div class="col-md-12" *ngFor="let question of NEW_QUESTIONS">
+            <form-section [question]="question" (onTypeChange)="onChangeType($event)" (addSubInput)="onAddFirstLevelInput($event)"
+                (deleteSubInput)="onDeleteSubInput($event)"></form-section>
+        </div>
+    </div>
+    <div class="row clearfix">
+            &nbsp;
+        <button type="button" (click)="onSave()" class="btn btn-block btn-submit">Save to Indexed DB</button>
+    </div>
+    <!-- <div class="row clearfix">
+        &nbsp;
+        <pre>{{NEW_QUESTIONS | json}}</pre>
+    </div> -->
+</div>
+<!-- <div class="loader" *ngIf="loading">
+    <mat-spinner class="loaders"></mat-spinner>
+</div> -->

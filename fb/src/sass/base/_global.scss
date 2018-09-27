@@ -1,0 +1,234 @@
+html,
+body {
+    font-family: $primary-font-family;
+    font-weight: 400;
+    color: $primary-color;
+    font-size: $base-font-size;
+    background-color:#fff}
+a, a:focus, button, input, select, textarea, .btn { 
+    outline: none;
+}
+img { 
+    max-width: 100%;
+    height: auto;
+}
+.img-fluid { 
+    display: block;
+    width: 100%;
+}
+a, a:before, a:after, input, textarea, select, button  {
+    @include transition;
+}
+a {
+  color: $secondary-color;
+  text-decoration: none;
+}
+a:hover,
+a:focus {
+  color: darken($secondary-color, 10%);
+  text-decoration: underline;
+}
+ol, ul { 
+    margin-bottom: 15px;
+    padding-left: 15px;
+}
+.form-horizontal .form-group.gutter-5 {
+    margin-right: -5px;
+    margin-left: -5px;
+}
+.no-gutter { 
+    margin-left: 0;
+    margin-right: 0;
+}
+.no-gutter > [class*=col-] {
+    padding-right: 0;
+    padding-left: 0;
+}
+.gutter-10 { 
+    margin-left: -10px;
+    margin-right: -10px;
+}
+.gutter-10 > [class*=col-] {
+    padding-right: 10px;
+    padding-left: 10px;
+}
+.gutter-7 { 
+    margin-left: -7px;
+    margin-right: -7px;
+}
+.gutter-7 > [class*=col-] {
+    padding-right: 7px;
+    padding-left: 7px;
+}
+.gutter-5 { 
+    margin-left: -5px;
+    margin-right: -5px;
+}
+.gutter-5 > [class*=col-] {
+    padding-right: 5px;
+    padding-left: 5px;
+}
+.btn.active.focus, .btn.active:focus, .btn.focus, .btn.focus:active, .btn:active:focus, .btn:focus { 
+    outline: none;
+}
+.btn { 
+    border-radius: 5px;
+    white-space: normal;
+}
+.btn-default { 
+    background: $light-grey;
+    border-color: $light-grey;
+    color: $primary-color;
+}
+::ng-deep .mat-form-field {
+    display: initial;
+     }
+     
+// .btn-default:hover, .btn-default.active.focus, .btn-default.active:focus, .btn-default.active:hover, .btn-default.focus:active, .btn-default:active:focus, .btn-default:active:hover, .open > .dropdown-toggle.btn-default.focus, .open > .dropdown-toggle.btn-default:focus, .open > .dropdown-toggle.btn-default:hover, .btn-default.active, .btn-default:active, .open > .dropdown-toggle.btn-default, .btn-default.focus, .btn-default:focus, .btn-default.disabled.focus, .btn-default.disabled:focus, .btn-default.disabled:hover, .btn-default.focus[disabled], .btn-default[disabled]:focus, .btn-default[disabled]:hover, fieldset[disabled] .btn-default.focus, fieldset[disabled] .btn-default:focus, fieldset[disabled] .btn-default:hover { 
+//     background: $secondary-color;
+//     border-color: $secondary-color;
+//     box-shadow: none;
+//     color: $white-color;
+// }
+.btn-primary { 
+    background: $secondary-color;
+    border-color: $secondary-color;
+}
+.btn-primary:hover, .btn-primary.active.focus, .btn-primary.active:focus, .btn-primary.active:hover, .btn-primary.focus:active, .btn-primary:active:focus, .btn-primary:active:hover, .open > .dropdown-toggle.btn-primary.focus, .open > .dropdown-toggle.btn-primary:focus, .open > .dropdown-toggle.btn-primary:hover, .btn-primary.active, .btn-primary:active, .open > .dropdown-toggle.btn-primary, .btn-primary.focus, .btn-primary:focus, .btn-primary.disabled.focus, .btn-primary.disabled:focus, .btn-primary.disabled:hover, .btn-primary.focus[disabled], .btn-primary[disabled]:focus, .btn-primary[disabled]:hover, fieldset[disabled] .btn-primary.focus, fieldset[disabled] .btn-primary:focus, fieldset[disabled] .btn-primary:hover { 
+    background: darken($secondary-color, 10%);
+    border-color: darken($secondary-color, 10%);
+}
+.btn-fb { 
+    background: $facebook-color;
+    border-color: $facebook-color;
+    color: $white-color;
+}
+.btn-google { 
+    background: $google-color;
+    border-color: $google-color;
+    color: $white-color;
+}
+.btn-twitter { 
+    background: $twitter-color;
+    border-color: $twitter-color;
+    color: $white-color;
+}
+.dropdown-menu > .active > a, .dropdown-menu > .active > a:focus, .dropdown-menu > .active > a:hover { 
+    background: $secondary-color;
+    color: $white-color;
+}
+.input-group-btn-vertical {
+  position: relative;
+  white-space: nowrap;
+  width: 1%;
+  vertical-align: middle;
+  display: table-cell;
+}
+.input-group-btn-vertical > .btn {
+  display: block;
+  float: none;
+  width: 100%;
+  max-width: 100%;
+  padding: 8px;
+  margin-left: -1px;
+  position: relative;
+  border-radius: 0;
+}
+.input-group-btn-vertical > .btn:first-child {
+  border-top-right-radius: 4px;
+}
+.input-group-btn-vertical > .btn:last-child {
+  margin-top: -2px;
+  border-bottom-right-radius: 4px;
+}
+.input-group-btn-vertical i{
+  position: absolute;
+  top: 0;
+  left: 4px;
+}
+@include breakpoint(large){ 
+    .container { 
+        width: auto;
+    }
+}
+@include breakpoint(small-inverse){ 
+    .btn-big { 
+        padding: 15px 25px;
+    }
+    .sk-main { 
+        min-height: 600px;
+    }
+}
+.sk-page-content { 
+    padding: 20px 0;
+}
+.sk-map { 
+    margin-bottom: 15px;
+}
+.alert { 
+    padding: 10px 15px;
+    margin-bottom: 15px;
+}
+.btn-wrap { 
+    margin-bottom: 15px;
+}
+.btn-fixed { 
+    min-width: 120px;
+}
+address { 
+    margin-bottom: 15px;
+}
+.color-red { 
+    color: $red-color;
+}
+.color-green { 
+    color: $green-color;
+}
+.color-orange { 
+    color: $orange-color;
+}
+.dropdown-menu > li > a { 
+    padding: 10px 20px;
+}
+.sk-loader { 
+    position: fixed; 
+    left: 0; 
+    display: none;
+    top: 0; 
+    right: 0; 
+    bottom: 0; 
+    z-index: 999; 
+    background:rgba(0,0,0,.8) url(../assets/images/spinner.svg) no-repeat center center;
+}
+label { 
+    position: relative;
+}
+input[type="checkbox"] + span:before { 
+    position: absolute;
+    left: 0;
+    top: 0;
+    font-size: 16px;
+    content: "\f096";
+    font-family: "FontAwesome";
+}
+input[type="checkbox"]:checked + span:before { 
+    content: "\f046";
+    color: $secondary-color;
+}
+input[type="radio"] + span:before { 
+    position: absolute;
+    left: 0;
+    top: 0;
+    content: "\f10c";
+    font-family: "FontAwesome";
+}
+input[type="radio"]:checked + span:before { 
+    content: "\f192";
+    color: $secondary-color;
+}
+.tab-content { 
+    padding: 15px;
+}
+.panel-group .panel + .panel { 
+    margin-top: 15px;
+}

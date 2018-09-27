@@ -1,0 +1,181 @@
+@mixin calc($property, $expression) {
+    #{$property}: -moz-calc(#{$expression}); #{$property}: -webkit-calc(#{$expression}); #{$property}: calc(#{$expression});
+}
+@mixin box-sizing($expression) {
+    box-sizing: #{$expression}; -moz-box-sizing: #{$expression}; -webkit-box-sizing: #{$expression};
+}
+@mixin transform($expression) {
+    transform: #{$expression}; -moz-transform: #{$expression}; -webkit-transform: #{$expression};
+}
+@mixin transition($expression) {
+    transition: #{$expression}; -moz-transition: #{$expression}; -webkit-transition: #{$expression};
+}
+@mixin linear-gradient($color1, $color2) {
+    background: linear-gradient($color1, $color2);
+    background: -webkit-linear-gradient($color1, $color2);
+    background: -moz-linear-gradient($color1, $color2);
+}
+@mixin sameValue($properties-list, $val) {
+    $list: $properties-list;
+    @each $item in $list {
+        #{$item}: $val;
+    }
+}
+@mixin filters($expression) {
+    filter:#{$expression}; -moz-filter: #{$expression}; -webkit-filter: #{$expression}; -ms-filter: #{$expression};
+}
+@mixin dimentions($ww, $hh) {
+    width: $ww; height: $hh;
+}
+@mixin mq($query) {
+    @media screen and (#{$query}) {
+        @content;
+    }
+}
+// center vertically and/or horizontally an absolute positioned element
+@mixin transform($transforms) {
+  -moz-transform: $transforms;
+  -o-transform: $transforms;
+  -ms-transform: $transforms;
+  -webkit-transform: $transforms;
+  transform: $transforms;
+}
+
+@mixin center($xy:xy) {
+  @if $xy == xy {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    bottom: auto;
+    right: auto;
+    @include transform(translateX(-50%) translateY(-50%));
+  }
+  @else if $xy == x {
+    left: 50%;
+    right: auto;
+    @include transform(translateX(-50%));
+  }
+  @else if $xy == y {
+    top: 50%;
+    bottom: auto;
+    @include transform(translateY(-50%));
+  }
+}
+
+@mixin transition($property: all, $time: 0.3s, $method: ease-in-out) {
+  -webkit-transition: $property $time $method;
+  -moz-transition: $property $time $method;
+  -ms-transition: $property $time $method;
+  -o-transition: $property $time $method;
+  transition: $property $time $method;
+}
+
+@mixin animation ($delay) {
+    -webkit-animation-delay: $delay;
+    -moz-animation-delay: $delay;
+    -o-animation-delay: $delay;
+    animation-delay: $delay;
+}
+
+
+@mixin transition-delay($delay) {
+    -moz-transition-delay:$delay;
+    -o-transition-delay:$delay;
+    -webkit-transition-delay: $delay;
+    transition-delay:$delay;
+}
+@mixin x-appearance {
+	-webkit-appearance: none;
+	   -moz-appearance: none;
+	        appearance: none;
+}
+
+@mixin placeholder {
+  ::-webkit-input-placeholder {@content}
+  :-moz-placeholder           {@content}
+  ::-moz-placeholder          {@content}
+  :-ms-input-placeholder      {@content}  
+}
+
+@mixin text-truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+@mixin input-placeholder {
+    &.placeholder { @content; }
+    &:-moz-placeholder { @content; }
+    &::-moz-placeholder { @content; }
+    &:-ms-input-placeholder { @content; }
+    &::-webkit-input-placeholder { @content; }
+}
+
+@function calculateRem($size) {
+  $remSize: $size / 16px;
+  @return $remSize * 1rem;
+}
+@mixin font-size($size) {
+  font-size: $size;
+  font-size: calculateRem($size);
+}
+@mixin opacity($opacity) {
+  opacity: $opacity;
+  $opacity-ie: $opacity * 100;
+  filter:alpha(opacity=$opacity-ie); //IE8
+}
+$breakpoints: ( 'tiny': ( max-width: 479px ), 'small': ( max-width: 767px ), 'small-inverse': ( min-width: 768px ), 'medium': ( max-width: 991px ), 'large': ( max-width: 1199px ), 'large-inverse': ( min-width: 1200px ), 'xlarge': ( max-width: 1280px ), 'xlarge-inverse': ( min-width: 1281px ) );
+// Creating the mixin
+@mixin breakpoint($name) {
+  @if map-has-key($breakpoints, $name) {
+    @media #{inspect(map-get($breakpoints, $name))} {
+      @content;
+    }
+  }
+  @else {
+    @warn "Couldn't find a your breakpoint named `#{$name}`.";
+  }
+}
+
+// breakpoints
+   
+$S:     480px;   
+$M:     768px;         
+
+// media queries
+
+@mixin MQ($canvas) {
+  @if $canvas == S {
+   @media only screen and (min-width: $S) { @content; } 
+  }
+  @else if $canvas == M {
+   @media only screen and (min-width: $M) { @content; } 
+  }
+}
+
+// super light grid - it works with the .cd-container class inside style.scss
+
+@mixin column($percentage, $float-direction:left) {
+  width: 100% * $percentage;
+  float: $float-direction;
+}
+
+@mixin font-smoothing {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+@mixin gradient-horizontal($start-color, $end-color, $start-percent, $end-percent) {
+  background-image: -webkit-linear-gradient(left, $start-color $start-percent, $end-color $end-percent); // Safari 5.1-6, Chrome 10+
+  background-image: -o-linear-gradient(left, $start-color $start-percent, $end-color $end-percent); // Opera 12
+  background-image: linear-gradient(to right, $start-color $start-percent, $end-color $end-percent); // Standard, IE10, Firefox 16+, Opera 12.10+, Safari 7+, Chrome 26+
+  background-repeat: repeat-x;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#{ie-hex-str($start-color)}', endColorstr='#{ie-hex-str($end-color)}', GradientType=1); // IE9 and down
+}
+@mixin background($value){
+  background: $value;
+}
+@mixin fontSize($value){
+  font-size: $value;
+}
+@mixin fontColor($value){
+  color:$value;
+}

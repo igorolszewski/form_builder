@@ -1,0 +1,119 @@
+@import '~@angular/material/_theming';
+//@import '~@angular/material/theming';
+// @import '~@angular/material/prebuilt-themes/deeppurple-amber.css';
+// // NOTE: Theming is currently experimental and not yet publicly released!
+
+ @include mat-core();
+
+ $primary: mat-palette($mat-red);
+ $accent:  mat-palette($mat-red, A700, A700, A700);
+
+ $theme: mat-light-theme($primary, $accent);
+
+ @include angular-material-theme($theme);
+
+/* this file will be extracted to main dist folder and is imported in index.html */
+/* This file is for setting global styles  */
+
+/****** Fonts ******/
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i');
+//@import "../../node_modules/@angular/material/prebuilt-themes/indigo-pink.css";
+
+/****** Vendors ******/
+@import '../assets/css/bootstrap.min.css';
+@import '../assets/css/font-awesome.min.css';
+
+/****** SCSS Functions ******/
+  @import '../sass/helpers/variables.scss';
+  @import '../sass/helpers/mixins.scss';
+
+/****** Layouts ******/
+@import '../sass/layout/header.scss';
+@import '../sass/layout/footer.scss';
+
+/****** Full Pages ******/
+// @import '../sass/pages/home.scss';
+
+/****** Default Styles ******/
+@import '../sass/base/typography.scss';
+
+/****** Global Classes ******/
+@import '../sass/base/global.scss';
+
+@import '../../node_modules/primeng/resources/themes/omega/theme.css';
+@import '../../node_modules/primeng/resources/primeng.min.css';
+
+// html, body {
+//   // height: 100% !important;
+// }
+body {
+  // background-color: #F7F7F7;
+  font-family: 'Muli', sans-serif;
+}
+.main-wrap{
+  height: 100%;
+}
+form .btn-submit{
+  border-radius: 0;
+  background-color: #004e5e;
+  color: #fcb845;
+  font-size: 16px;
+  font-weight: 700;
+}
+label{
+  font-weight: bold;
+}
+.left-side{
+  background: #fdb945;
+  color: #004e5e;
+  position: relative;
+  text-align: center;
+  min-height: calc(100vh - 1px);
+  @media all and (max-width: 767px) {
+    min-height: 100%;
+  }
+  h1{
+    color: #004e5e !important;
+    text-align: center;
+    line-height: 1em;
+    text-transform: uppercase;
+    font-weight: 700;
+    @media all and (max-width: 992px){
+      line-height: 1em;
+    }
+  }
+  .sidebar-content{
+    margin-top: 50px;
+  }
+}
+.right-side{
+  border: 1px solid #FDBA42;
+  background-color:#F7F7F7;
+}
+.survey-forms{
+  padding: 32px 0;
+}
+.footer-logo{
+  margin-top: auto;
+  padding: 0 0 32px 0;
+}
+form input[type=text], form input[type=email], form input[type=password], form label, .ng-star-inserted{
+  font-size: 16px;
+}
+footer{
+  background: #333333;
+  color: #fff;
+  padding: 16px;
+  margin-top: 32px;
+}
+
+.loaders{
+  position: absolute;
+  left:45%;
+  top: 40%;
+
+
+}
+ .mat-spinner circle {
+  stroke: #014E60 !important;
+}

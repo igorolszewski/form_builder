@@ -1,0 +1,224 @@
+<section class="form-section-wrapper" *ngIf="question">
+    <form class="form-horizontal">
+        <div class="form-group" *ngIf="question.parentid != '0'">
+            <label for="inputEmail3" class="col-sm-2 control-label">Condition</label>
+            <div class="col-sm-12">
+                <div class="row">
+                    <div class="col-sm-6 ">
+                        <select [id]="question.conditionselectid" class="form-control">
+                            <option value="eq">Equals</option>
+                            <option value="gt">Greater than</option>
+                            <option value="lt">Less than</option>
+                        </select>
+                    </div>
+                    <div class="col-sm-6">
+                        <input type="text" [id]="question.conditiontextid" class="form-control" placeholder="">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="inputEmail3" class="col-sm-2 control-label">Question</label>
+            <div class="col-sm-12">
+                <input type="text" [id]="question.questionid" class="form-control" id="inputEmail3" placeholder="Question">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="inputPassword3" class="col-sm-2 control-label">Type</label>
+            <div class="col-sm-12">
+                <select [id]="question.questiontypeid" (change)="onChange(question,$event.target.value)" class="form-control">
+                    <option value="text">TEXT</option>
+                    <option value="number">NUMBER</option>
+                    <option value="select">YES/NO</option>
+                </select>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="text-right col-sm-12">
+                <button type="button" class="btn btn-primary" (click)="AddSubSection(question)">Add Sub-Input</button>
+                <button type="button" class="btn btn-default" (click)="deleteSection(question)">Delete</button>
+            </div>
+        </div>
+    </form>
+    <div *ngFor="let subsection of question.SubQuestions">
+        <div [style.margin-left]="(subsection.parentid > 0 ? '40px':'')">
+            <div class="form-section-wrapper subsection">
+                <form class="form-horizontal">
+                    <div class="form-group">
+                        <label for="inputEmail3" class="col-sm-2 control-label">Condition</label>
+                        <div class="col-sm-12">
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <select [id]="subsection.conditionselectid" class="form-control">
+                                        <option value="eq">Equals</option>
+                                        <option value="gt">Greater than</option>
+                                        <option value="lt">Less than</option>
+                                    </select>
+                                </div>
+                                <div class="col-sm-6" *ngIf="subsection.parentType == 'select'">
+                                    <select [id]="subsection.conditionyesnoid" class="form-control">
+                                        <option value="">YES</option>
+                                        <option value="">NO</option>
+                                    </select>
+                                </div>
+                                <div class="col-sm-6" *ngIf="subsection.parentType == 'text'">
+                                    <input type="text" class="form-control" [id]="subsection.conditiontextid"
+                                        placeholder="">
+                                </div>
+                                <div class="col-sm-6" *ngIf="subsection.parentType == 'number'">
+                                    <input type="number" class="form-control" [id]="subsection.conditiontextid"
+                                        placeholder="">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputEmail3" class="col-sm-2 control-label">Question</label>
+                        <div class="col-sm-12">
+                            <input type="text" [id]="subsection.questionid" class="form-control" placeholder="Question">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputPassword3" class="col-sm-2 control-label">Type</label>
+                        <div class="col-sm-12">
+                            <select [id]="subsection.questiontypeid" (change)="onSubChange(subsection,$event.target.value)"
+                                class="form-control">
+                                <option value="text">TEXT</option>
+                                <option value="number">NUMBER</option>
+                                <option value="select">YES/NO</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="text-right col-sm-12">
+                            <button type="button" class="btn btn-primary" (click)="addChildSection(subsection)">Add
+                                Sub-Input</button>
+                            <button type="button" class="btn btn-default" (click)="deleteChildSection(subsection)">Delete</button>
+                        </div>
+                    </div>
+                </form>
+                <div *ngFor="let childsection of subsection.SubQuestions">
+                    <div [style.margin-left]="(childsection.parentid > 0 ? '60px':'')">
+                        <div class="form-section-wrapper subsection">
+                            <form class="form-horizontal">
+                                <div class="form-group">
+                                    <label for="inputEmail3" class="col-sm-2 control-label">Condition</label>
+                                    <div class="col-sm-12">
+                                        <div class="row">
+                                            <div class="col-sm-6">
+                                                <select [id]="childsection.conditionselectid" class="form-control">
+                                                    <option value="eq">Equals</option>
+                                                    <option value="gt">Greater than</option>
+                                                    <option value="lt">Less than</option>
+                                                </select>
+                                            </div>
+                                            <div class="col-sm-6" *ngIf="childsection.parentType == 'select'">
+                                                <select class="form-control">
+                                                    <option value="">YES</option>
+                                                    <option value="">NO</option>
+                                                </select>
+                                            </div>
+                                            <div class="col-sm-6" *ngIf="childsection.parentType == 'text'">
+                                                <input type="text" class="form-control" [id]="childsection.conditiontextid"
+                                                    placeholder="">
+                                            </div>
+                                            <div class="col-sm-6" *ngIf="childsection.parentType == 'number'">
+                                                <input type="number" class="form-control" [id]="childsection.conditiontextid"
+                                                    placeholder="">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="inputEmail3" class="col-sm-2 control-label">Question</label>
+                                    <div class="col-sm-12">
+                                        <input type="text" [id]="childsection.questionid" class="form-control"
+                                            placeholder="Question">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="inputPassword3" class="col-sm-2 control-label">Type</label>
+                                    <div class="col-sm-12">
+                                        <select [id]="childsection.questiontypeid" (change)="onChildChange(childsection,$event.target.value)"
+                                            class="form-control">
+                                            <option value="text">TEXT</option>
+                                            <option value="number">NUMBER</option>
+                                            <option value="select">YES/NO</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="text-right col-sm-12">
+                                            <button type="button" class="btn btn-primary" (click)="addLastSection(childsection)">Add
+                                                    Sub-Input</button>
+                                                <button type="button" class="btn btn-default" (click)="deleteLastSection(childsection)">Delete</button>
+                                    </div>
+                                </div>
+                            </form>
+                            <div *ngFor="let lastsection of childsection.SubQuestions">
+                                    <div [style.margin-left]="(lastsection.parentid > 0 ? '60px':'')">
+                                        <div class="form-section-wrapper subsection">
+                                            <form class="form-horizontal">
+                                                <div class="form-group">
+                                                    <label for="inputEmail3" class="col-sm-2 control-label">Condition</label>
+                                                    <div class="col-sm-12">
+                                                        <div class="row">
+                                                            <div class="col-sm-6">
+                                                                <select [id]="lastsection.conditionselectid" class="form-control">
+                                                                    <option value="eq">Equals</option>
+                                                                    <option value="gt">Greater than</option>
+                                                                    <option value="lt">Less than</option>
+                                                                </select>
+                                                            </div>
+                                                            <div class="col-sm-6" *ngIf="lastsection.parentType == 'select'">
+                                                                <select class="form-control">
+                                                                    <option value="">YES</option>
+                                                                    <option value="">NO</option>
+                                                                </select>
+                                                            </div>
+                                                            <div class="col-sm-6" *ngIf="lastsection.parentType == 'text'">
+                                                                <input type="text" class="form-control" [id]="lastsection.conditiontextid"
+                                                                    placeholder="">
+                                                            </div>
+                                                            <div class="col-sm-6" *ngIf="lastsection.parentType == 'number'">
+                                                                <input type="number" class="form-control" [id]="lastsection.conditiontextid"
+                                                                    placeholder="">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="inputEmail3" class="col-sm-2 control-label">Question</label>
+                                                    <div class="col-sm-12">
+                                                        <input type="text" [id]="lastsection.questionid" class="form-control"
+                                                            placeholder="Question">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="inputPassword3" class="col-sm-2 control-label">Type</label>
+                                                    <div class="col-sm-12">
+                                                        <select [id]="lastsection.questiontypeid" (change)="onChange($event.target.value, lastsection.RowNo)"
+                                                            class="form-control">
+                                                            <option value="text">TEXT</option>
+                                                            <option value="number">NUMBER</option>
+                                                            <option value="select">YES/NO</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <!-- <div class="form-group">
+                                                    <div class="text-right col-sm-12">
+                                                        <button type="submit" class="btn btn-primary">Add Sub-Input</button>
+                                                        <button type="submit" class="btn btn-default">Delete</button>
+                                                    </div>
+                                                </div> -->
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

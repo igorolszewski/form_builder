@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Form Builder :: Home</title>
+  <script>
+
+ //   window.APPSETTINGS = {
+ //                           BASE_URL: 'https://api.pyriolo.com/',
+ //                           API_URL: 'http://localhost:56753/api/',
+ //                           WEBHOOK_URL: 'https://webhooks.pyriolo.com/api/'
+ //                        };
+    window.APPSETTINGS = {
+                            BASE_URL: 'https://api.pyriolo.com/',
+                            API_URL: 'https://api.pyriolo.com/api/',
+                            WEBHOOK_URL: 'https://webhooks.pyriolo.com/api/'
+                         };
+  </script>    
+
+  <!-- <link href="../assets/css/developer.css" rel="stylesheet">
+  <link href="../assets/css/main.css" rel="stylesheet"> -->
+
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Muli:300,400,700" rel="stylesheet">
+  <link href="assets/css/bootstrap.min.css" rel="stylesheet">
+  <% if (webpackConfig.htmlElements.headTags) { %>
+    <!-- Configured Head Tags  -->
+    <%= webpackConfig.htmlElements.headTags %>
+      <% } %>
+
+        <!-- base url -->
+        <base href="<%= htmlWebpackPlugin.options.metadata.baseUrl %>">
+
+
+        <%= htmlWebpackPlugin.files.webpackManifest %>
+
+
+          <!-- Async Google Analytics: change UA-71073175-1 to be your site's ID -->
+          <script>
+            window.ga = window.ga || function () { (ga.q = ga.q || []).push(arguments) }; ga.l = +new Date;
+            ga('create', 'UA-71073175-1', 'auto');
+            ga('send', 'pageview');
+          </script>
+          <script async src="https://www.google-analytics.com/analytics.js"></script>
+          <!-- End Google Analytics -->
+
+          <!-- CSS will be injected by webpack here -->
+          <!-- Preload link tags will be injected by webpack here -->
+
+</head>
+
+<body>
+
+  <app>
+    Loading...
+  </app>
+
+  <!-- Scripts will be injected by webpack here -->
+  <!-- Java Script Libraries -->
+  <script src="../assets/js/vendors/jquery-3.1.1.min.js"></script>
+  <script src="../assets/js/vendors/bootstrap.min.js"></script>
+
+  <!-- <script src="../assets/js/vendors/slick.min.js"></script>
+  <script src="../assets/js/vendors/validator.js"></script>
+  <script src="../assets/js/vendors/moment.min.js"></script>
+  <script src="../assets/js/vendors/bootstrap-datetimepicker.min.js"></script>
+  <script src="../assets/js/vendors/bootstrap-multiselect.js"></script>
+  <script src="../assets/js/vendors/jquery.bootstrap-touchspin.js"></script> -->
+  <!-- <script src="../assets/js/main.js"></script> -->
+  <!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T"
+crossorigin="anonymous"></script>
+
+
+  <!-- Google Analytics: change UA-71073175-1 to be your site's ID -->
+  <script>
+    (function (A, n, g, u, l, a, r) {
+      A.GoogleAnalyticsObject = r; A[l] = A[l] || function () {
+        (A[l].q = A[l].q || []).push(arguments)
+      }, A[l].l = 1 * new Date(); a = n.createElement(g),
+        r = n.getElementsByTagName(g)[0]; a.async = 1; a.src = u; r.parentNode.insertBefore(a, r)
+    })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+
+    ga('create', 'UA-71073175-1', 'auto');
+    ga('send', 'pageview');
+  </script>
+<!-- <script src="../node_modules/angular2-indexeddb/angular2-indexeddb.js"></script> -->
+
+  <% if (htmlWebpackPlugin.options.metadata.isDevServer && htmlWebpackPlugin.options.metadata.HMR !== true) { %>
+    <!-- Webpack Dev Server reload -->
+    <script src="/webpack-dev-server.js"></script>
+    <% } %>
+
+</body>
+
+</html>
